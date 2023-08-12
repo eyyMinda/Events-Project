@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { useRouter } from "next/router";
 import { getEventById } from "@/dummy-data";
 
@@ -10,24 +11,34 @@ import EventLogistics from "@/components/events/event-details/event-logistics";
 export default function EventDetailsPage() {
   const router = useRouter();
   const event = getEventById(router.query.eventid);
-  // const { id, title, location, date, image } = event;
 
   if (!event) {
     return (
-      <ErrorAlert>
-        Unfortunately, the event you are looking for was not found!
-        <Button link="/events/">Back to Events</Button>
-      </ErrorAlert>
+      <Fragment>
+        <ErrorAlert>
+          <p>Unfortunately, the event you are looking for was not found.</p>
+        </ErrorAlert>
+        <div className="center">
+          <Button link="/events/">Browse All Events</Button>
+        </div>
+      </Fragment>
+    );
+  } else {
+    const { title, location, date, image, description } = event;
+
+    return (
+      <Fragment>
+        <EventSummary title={title} />
+        <EventLogistics
+          date={date}
+          location={location}
+          image={image}
+          imageAlt={title}
+        />
+        <EventContent>
+          <p>{description}</p>
+        </EventContent>
+      </Fragment>
     );
   }
-
-  return (
-    <div>
-      <h1>Event Details Page</h1>
-      <EventContent>
-        <EventSummary title={event.title} />
-        <EventLogistics event={event} />
-      </EventContent>
-    </div>
-  );
 }

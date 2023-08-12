@@ -11,7 +11,7 @@
 .logo {
   font-size: 1.5rem;
   color: white;
-  font-family: 'Fira', sans-serif;
+  font-family: "Fira", sans-serif;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -23,7 +23,6 @@
   text-decoration: none;
   color: #94fdfd;
 }
-
 .navigation a {
   text-decoration: none;
   color: #74dacc;

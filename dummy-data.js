@@ -31,15 +31,6 @@ const DUMMY_EVENTS = [
   },
 ];
 
-const HEADER_NAV_ROUTES = [
-  { pathname: "/events/" },
-  { id: DUMMY_EVENTS[1].id, name: DUMMY_EVENTS[1].title },
-  { pathname: "/events/[year]/[month]", year: 2023, month: 8 },
-];
-export function getHeaderRoutes() {
-  return HEADER_NAV_ROUTES;
-}
-
 export function getAllEvents() {
   return DUMMY_EVENTS;
 }

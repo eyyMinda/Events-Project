@@ -1,9 +1,16 @@
-import React from 'react'
+import { Fragment } from "react";
+import ErrorAlert from "@/components/events/error-alert/error-alert";
+import Button from "@/components/ui/button";
 
 export default function NotFoundPage() {
   return (
-    <div>
-      <h1>Not Found Page</h1>
-    </div>
-  )
+    <Fragment>
+      <ErrorAlert>
+        <p>Page Not Found</p>
+      </ErrorAlert>
+      <div className="center">
+        <Button link="/events/">Browse All Events</Button>
+      </div>
+    </Fragment>
+  );
 }
