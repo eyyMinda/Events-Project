@@ -17,7 +17,10 @@ function EventLogistics(props) {
   return (
     <section className={css.logistics}>
       <div className={css.image}>
-        <img src={`@/public/${image}`} alt={imageAlt} />
+        <img
+          src={`https://eyyminda.github.io/Events-Project/${image}`}
+          alt={imageAlt}
+        />
       </div>
       <ul className={css.list}>
         <LogisticsItem icon={DateIcon}>
