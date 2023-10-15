@@ -31,17 +31,17 @@ const DUMMY_EVENTS = [
   },
 ];
 
-export function getAllEvents() {
+function getAllEvents() {
   return DUMMY_EVENTS;
 }
-export function getFeaturedEvents() {
+function getFeaturedEvents() {
   return DUMMY_EVENTS.filter(event => event.isFeatured);
 }
-export function getEventById(id) {
+function getEventById(id) {
   return DUMMY_EVENTS.find(event => event.id === id);
 }
 
-export function getFilteredEvents(dateFilter) {
+function getFilteredEvents(dateFilter) {
   const { year, month } = dateFilter;
 
   let filteredEvents = DUMMY_EVENTS.filter(event => {
@@ -53,3 +53,10 @@ export function getFilteredEvents(dateFilter) {
 
   return filteredEvents;
 }
+
+// export {
+//   getAllEvents,
+//   getFeaturedEvents,
+//   getEventById,
+//   getFilteredEvents
+// }
