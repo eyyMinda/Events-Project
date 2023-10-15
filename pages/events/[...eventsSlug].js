@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import { getFilteredEvents } from "@/helpers/api-util";
+import { useRouter } from "next/router";
+import { getFeaturedEvents, getFilteredEvents } from "@/helpers/api-util";
 
 import ErrorAlert from "@/components/events/error-alert/error-alert";
 import Button from "@/components/ui/button";
@@ -7,6 +8,13 @@ import EventList from "@/components/events/event-list/eventList";
 import ResultsTitle from "@/components/events/events-search/results-title";
 
 export default function FilteredEventsPage(props) {
+  const router = useRouter();
+  const dataFilter = router.query.eventsSlug;
+  // Loading Filter Route
+  if (!dataFilter) {
+    return <ErrorAlert>Loading...</ErrorAlert>;
+  }
+
   if (props.hasError) {
     return (
       <Fragment>
@@ -46,7 +54,7 @@ export default function FilteredEventsPage(props) {
   }
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { params } = context;
   const [year, month] = params.eventsSlug.map(Number);
 
@@ -65,4 +73,15 @@ export async function getServerSideProps(context) {
   const events = await getFilteredEvents({ year, month });
 
   return { props: { events, date: { year, month } } };
+}
+
+export async function getStaticPaths() {
+  const events = await getFeaturedEvents();
+  const paths = events.map(event => {
+    const [year, month] = event.date.split('-');
+
+    return { params: { eventsSlug: [year, month] } };
+  });
+
+  return { paths, fallback: true };
 }
