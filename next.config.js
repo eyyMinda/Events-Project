@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   // output: "export",
-  env: {
-    DB_URL: "_REMOVED_DB_URL"
-  }
 };
 
 module.exports = nextConfig;
