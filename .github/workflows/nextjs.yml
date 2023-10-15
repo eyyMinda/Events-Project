@@ -77,9 +77,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           DB_URL: ${{ secrets.DB_URL }}
-      ### (Commented to be able to use getServerSideProps)
-      #- name: Static HTML export with Next.js
-      #  run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      - name: Static HTML export with Next.js
+        run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
