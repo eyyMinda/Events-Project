@@ -8,7 +8,9 @@ import EventContent from "@/components/events/event-details/event-content";
 import EventLogistics from "@/components/events/event-details/event-logistics";
 
 export default function EventDetailsPage(props) {
-  if (props.event === null) {
+  if (!props.event && props.event !== null) {
+    return <ErrorAlert>Loading...</ErrorAlert>;
+  } else if (props.event === null) {
     return (
       <Fragment>
         <ErrorAlert>
@@ -18,12 +20,6 @@ export default function EventDetailsPage(props) {
           <Button link="/events/">Browse All Events</Button>
         </div>
       </Fragment>
-    );
-  } else if (!props.event) {
-    return (
-      <div className="center">
-        Loading...
-      </div>
     );
   } else {
     const { title, location, date, image, description } = props.event;
