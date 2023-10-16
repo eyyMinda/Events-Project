@@ -6,7 +6,8 @@ import DateIcon from "@/components/icons/date-icon";
 import Button from "@/components/ui/button";
 
 export default function EventItem(props) {
-  const { title, image, imageAlt, date, location, id } = props.event;
+  const { title, image, date, location, id } = props.event;
+  const imageAlt = title?.split(" ").join("-") || "event-img";
 
   const readableDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -18,12 +19,7 @@ export default function EventItem(props) {
 
   return (
     <li className={css.item}>
-      <Image
-        src={"/" + image}
-        width={600}
-        height={300}
-        alt={imageAlt || "event-img"}
-      />
+      <Image src={"/" + image} width={600} height={300} alt={imageAlt} />
       <div className={css.content}>
         <div>
           <h2>{title}</h2>
