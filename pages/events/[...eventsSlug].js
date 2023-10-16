@@ -8,6 +8,7 @@ import ErrorAlert from "@/components/events/error-alert/error-alert";
 import Button from "@/components/ui/button";
 import EventList from "@/components/events/event-list/eventList";
 import ResultsTitle from "@/components/events/events-search/results-title";
+import Head from "next/head";
 
 const fetcher = (...args) =>
   fetch(...args)
@@ -21,9 +22,19 @@ export default function FilteredEventsPage() {
   const { data, err, isLoading } = useSWR(api + "events.json", fetcher);
   useEffect(() => data && setEvents(data), [data]);
 
+  let pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta name="description" content={`A list of filtered events.`} />
+    </Head>
+  )
+
   // Loading Filter Route
   if (!events || isLoading) {
-    return <ErrorAlert>Loading...</ErrorAlert>;
+    return <Fragment>
+      {pageHeadData}
+      <ErrorAlert>Loading...</ErrorAlert>
+    </Fragment>;
   }
   const [year, month] = dataFilter.map(Number);
 
@@ -39,6 +50,7 @@ export default function FilteredEventsPage() {
   ) {
     return (
       <Fragment>
+        {pageHeadData}
         <ErrorAlert>
           <p>Invalid Filter. Please adjust your values!</p>
           {err && <description>{err}</description>}
@@ -55,10 +67,18 @@ export default function FilteredEventsPage() {
     return eDate.getFullYear() === year && eDate.getMonth() === month - 1;
   });
 
+
   // Check if Events exist based on Filter
   if (!filteredEvents || !filteredEvents[0]) {
+    pageHeadData = (
+      <Head>
+        <title>Filtered Events</title>
+        <meta name="description" content={`No events are happening at ${month}/${year}`} />
+      </Head>
+    )
     return (
       <Fragment>
+        {pageHeadData}
         <ErrorAlert>
           <p>Unfortunately, no events are happing at this time.</p>
         </ErrorAlert>
@@ -69,9 +89,15 @@ export default function FilteredEventsPage() {
     );
   } else {
     const currentDate = new Date(year, month - 1);
-
+    pageHeadData = (
+      <Head>
+        <title>Filtered Events | {filteredEvents.length}</title>
+        <meta name="description" content={`All events for ${month}/${year}`} />
+      </Head>
+    )
     return (
       <Fragment>
+        {pageHeadData}
         <ResultsTitle date={currentDate} />
         <EventList events={filteredEvents} />
       </Fragment>

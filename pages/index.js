@@ -2,7 +2,6 @@ import { getFeaturedEvents } from "@/helpers/api-util";
 import EventList from "@/components/events/event-list/eventList";
 
 export default function HomePage(props) {
-
   return <EventList events={props.events} />;
 }
 
