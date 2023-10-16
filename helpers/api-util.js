@@ -1,5 +1,5 @@
 import { transformObjToArr } from "./utility";
-const api = process.env.DB_URL;
+export const api = process.env.NEXT_PUBLIC_DB_URL;
 
 export async function getAllEvents() {
   const response = await fetch(api + "events.json");

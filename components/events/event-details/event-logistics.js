@@ -7,7 +7,6 @@ import LogisticsItem from "./logistics-item";
 
 function EventLogistics(props) {
   const { date, location, image, imageAlt } = props;
-  console.log(image);
   const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",

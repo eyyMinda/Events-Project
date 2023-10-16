@@ -1,13 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { api } from "@/helpers/api-util";
 import { transformObjToArr } from "@/helpers/utility";
 
 import ErrorAlert from "@/components/events/error-alert/error-alert";
 import Button from "@/components/ui/button";
 import EventList from "@/components/events/event-list/eventList";
 import ResultsTitle from "@/components/events/events-search/results-title";
-const api = process.env.DB_URL + "events.json";
+
 const fetcher = (...args) =>
   fetch(...args)
     .then(res => res.json())
@@ -17,7 +18,7 @@ export default function FilteredEventsPage() {
   const [events, setEvents] = useState();
   const dataFilter = useRouter().query.eventsSlug;
 
-  const { data, err, isLoading } = useSWR(api, fetcher);
+  const { data, err, isLoading } = useSWR(api + "events.json", fetcher);
   useEffect(() => data && setEvents(data), [data]);
 
   // Loading Filter Route
