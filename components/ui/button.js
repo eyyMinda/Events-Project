@@ -11,7 +11,7 @@ export default function Button(props) {
   }
 
   return (
-    <button className={css.btn} onClick={props.onClick}>
+    <button type='button' className={css.btn} onClick={props.onClick}>
       {props.children}
     </button>
   );
