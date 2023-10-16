@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useRouter } from "next/router";
-import { getFeaturedEvents, getFilteredEvents } from "@/helpers/api-util";
+import { getFilteredEvents } from "@/helpers/api-util";
 
 import ErrorAlert from "@/components/events/error-alert/error-alert";
 import Button from "@/components/ui/button";
@@ -54,7 +54,7 @@ export default function FilteredEventsPage(props) {
   }
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { params } = context;
   const [year, month] = params.eventsSlug.map(Number);
 
@@ -75,13 +75,13 @@ export async function getStaticProps(context) {
   return { props: { events, date: { year, month } } };
 }
 
-export async function getStaticPaths() {
-  const events = await getFeaturedEvents();
-  const paths = events.map(event => {
-    const [year, month] = event.date.split('-');
+// export async function getStaticPaths() {
+//   const events = await getFeaturedEvents();
+//   const paths = events.map(event => {
+//     const [year, month] = event.date.split('-');
 
-    return { params: { eventsSlug: [year, month] } };
-  });
+//     return { params: { eventsSlug: [year, month] } };
+//   });
 
-  return { paths, fallback: true };
-}
+//   return { paths, fallback: true };
+// }
