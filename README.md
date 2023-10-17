@@ -50,7 +50,7 @@ The project extends beyond the core concepts to cover more advanced areas:
 - **Commenting and Viewing Comments**: Incorporating a comment system with the ability to view and interact with comments from a database.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](MIT-LICENSE.txt).
 
 ---
 
