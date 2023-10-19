@@ -28,7 +28,7 @@ export default function NewComment(props) {
   }
 
   return (
-    <form className={css.form}>
+    <form className={css.form} onSubmit={sendCommentHandler}>
       <div className={css.row}>
         <div className={css.control}>
           <label htmlFor="email">Your email</label>

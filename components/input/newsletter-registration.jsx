@@ -1,4 +1,4 @@
-import css from "./newsletter-registration.module.css";
+import css from "./styles/newsletter-registration.module.css";
 
 export default function NewsletterRegistration() {
   function registrationHandler(e) {

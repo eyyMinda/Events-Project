@@ -1,12 +1,13 @@
 import { Fragment } from "react";
 import { getEventById, getFeaturedEvents } from "@/helpers/api-util";
 
+import Head from "next/head";
 import Button from "@/components/ui/button";
 import ErrorAlert from "@/components/events/error-alert/error-alert";
 import EventSummary from "@/components/events/event-details/event-summary";
 import EventContent from "@/components/events/event-details/event-content";
 import EventLogistics from "@/components/events/event-details/event-logistics";
-import Head from "next/head";
+import Comments from "@/components/input/comments";
 
 export default function EventDetailsPage(props) {
   if (!props.event && props.event !== null) {
@@ -23,7 +24,7 @@ export default function EventDetailsPage(props) {
       </Fragment>
     );
   } else {
-    const { title, location, date, image, description } = props.event;
+    const { id, title, location, date, image, description } = props.event;
 
     return (
       <Fragment>
@@ -42,6 +43,7 @@ export default function EventDetailsPage(props) {
         <EventContent>
           <p>{description}</p>
         </EventContent>
+        <Comments eventId={id} />
       </Fragment>
     );
   }
