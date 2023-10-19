@@ -1,3 +1,4 @@
+import { isValid } from "@/helpers/authValidation";
 import css from "./styles/new-comment.module.css";
 import { useRef, useState } from "react";
 
@@ -14,6 +15,9 @@ export default function NewComment(props) {
       name: nameInputRef.current.value,
       text: commentInputRef.current.value,
     };
+    const [emailErr, emailMsg] = isValid.email(input.email);
+    const [nameErr, nameMsg] = isValid.name(input.name);
+    console.log(emailMsg, nameMsg);
 
     const isInvalidInput = value => !value || value.trim() === "";
     if (
