@@ -35,3 +35,11 @@
 .control input {
   flex: 1;
 }
+.newsletter .success {
+  color: #03be9f;
+  font-size: 1rem;
+}
+.newsletter .error {
+  color: red;
+  font-size: 1rem;
+}
