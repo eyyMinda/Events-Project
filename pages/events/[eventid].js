@@ -50,15 +50,15 @@ export default function EventDetailsPage(props) {
 }
 
 export async function getStaticProps(context) {
-  const eventid = context.params.eventid;
-  const event = await getEventById(eventid) || null;
+  const eventId = context.params.eventId;
+  const event = await getEventById(eventId) || null;
 
   return { props: { event }, revalidate: 60 };
 }
 
 export async function getStaticPaths() {
   const events = await getFeaturedEvents();
-  const paths = events.map(event => ({ params: { eventid: event.id } }));
+  const paths = events.map(event => ({ params: { eventId: event.id } }));
 
   return { paths, fallback: true };
 }

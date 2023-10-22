@@ -1,5 +1,4 @@
 import css from "./styles/newsletter-registration.module.css";
-import { isValid } from "@/helpers/authValidation";
 import { useRef, useState } from "react";
 
 export default function NewsletterRegistration() {

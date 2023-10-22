@@ -1,9 +1,7 @@
 import EventItem from "./eventItem";
 import css from "./styles/eventList.module.css";
 
-export default function EventList(props) {
-  const { events } = props;
-
+export default function EventList({ events }) {
   return (
     <ul className={css.list}>
       {events.map(event => (
