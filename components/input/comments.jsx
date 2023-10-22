@@ -36,7 +36,7 @@ export default function Comments({ eventId }) {
 
   return (
     <section className={css.comments}>
-      <button onClick={() => setShowComments(prev => !prev)}>
+      <button type="button" onClick={() => setShowComments(prev => !prev)}>
         {showComments ? "Hide" : "Show"} Comments
       </button>
       {showComments && (
