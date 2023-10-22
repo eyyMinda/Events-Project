@@ -10,6 +10,6 @@ export default function handler(req, res) {
       return;
     }
 
-    res.status(200).json({ err: emailErr, msg: "You've succesfully signed-up to receive our newsletter!" });
+    res.status(201).json({ err: emailErr, msg: "You've succesfully signed-up to receive our newsletter!" });
   }
 }

@@ -31,6 +31,21 @@ const DUMMY_EVENTS = [
   },
 ];
 
+export const DUMMY_COMMENTS = [
+  {
+    id: "c1",
+    name: "Maximilian",
+    email: "maximilian@rugarb.ru",
+    text: "My First comment is amazing!",
+  },
+  {
+    id: "c2",
+    name: "Max",
+    email: "max@rjohb.ru",
+    text: "My Second comment is amazing!",
+  },
+]
+
 function getAllEvents() {
   return DUMMY_EVENTS;
 }

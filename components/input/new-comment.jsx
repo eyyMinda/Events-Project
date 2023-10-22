@@ -1,38 +1,24 @@
-import { isValid } from "@/helpers/authValidation";
 import css from "./styles/new-comment.module.css";
 import { useRef, useState } from "react";
 
-export default function NewComment(props) {
-  const [isInvalid, setIsInvalid] = useState(false);
+export default function NewComment({ onAddComment, inputRes }) {
   const emailInputRef = useRef();
   const nameInputRef = useRef();
   const commentInputRef = useRef();
 
-  function sendCommentHandler(e) {
+  function handleSendComment(e) {
     e.preventDefault();
     const input = {
       email: emailInputRef.current.value,
       name: nameInputRef.current.value,
       text: commentInputRef.current.value,
     };
-    const [emailErr, emailMsg] = isValid.email(input.email);
-    const [nameErr, nameMsg] = isValid.name(input.name);
-    console.log(emailMsg, nameMsg);
 
-    const isInvalidInput = value => !value || value.trim() === "";
-    if (
-      Object.values(input).some(isInvalidInput) ||
-      !input.email.includes("@")
-    ) {
-      setIsInvalid(true);
-      return;
-    }
-
-    props.onAddComment(input);
+    onAddComment(input);
   }
 
   return (
-    <form className={css.form} onSubmit={sendCommentHandler}>
+    <form className={css.form} onSubmit={handleSendComment}>
       <div className={css.row}>
         <div className={css.control}>
           <label htmlFor="email">Your email</label>
@@ -47,8 +33,16 @@ export default function NewComment(props) {
         <label htmlFor="comment">Your comment</label>
         <textarea id="comment" rows="5" ref={commentInputRef}></textarea>
       </div>
-      {isInvalid && <p>Please enter a valid email address and comment!</p>}
       <button>Submit</button>
+
+      {inputRes && (
+        <ol className={css[inputRes[0] ? "error" : "success"]}>
+          {inputRes[1]}
+          {inputRes[1]?.map((msg, i) => {
+            <li key={i}>{msg}</li>;
+          })}
+        </ol>
+      )}
     </form>
   );
 }
