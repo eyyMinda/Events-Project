@@ -9,8 +9,6 @@ export default function NewsletterRegistration() {
   function registrationHandler(e) {
     e.preventDefault();
     const email = emailRef.current.value;
-    const [emailErr, emailMsg] = isValid.email(email);
-    if (emailMsg !== inputResponse[1]) setInputResponse([emailErr, emailMsg]);
 
     const options = {
       method: "POST",
@@ -21,7 +19,7 @@ export default function NewsletterRegistration() {
       .then(res => res.json())
       .then(data => {
         const { err, msg } = data;
-        if (msg !== emailMsg) setInputResponse([err, msg]); // Validation res from the server
+        if (msg !== inputResponse[1]) setInputResponse([err, msg]); // Validation res from the server
       });
   }
 
