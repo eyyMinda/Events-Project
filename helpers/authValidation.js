@@ -93,6 +93,12 @@ class isValid {
 
     return [false, 'OK'];
   }
+
+  static text(str) {
+    if (str === undefined || str === '') return [true, 'Text cannot be blank'];
+
+    return [false, 'OK'];
+  }
 }
 
 export { isValid };
