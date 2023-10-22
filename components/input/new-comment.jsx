@@ -1,5 +1,5 @@
 import css from "./styles/new-comment.module.css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function NewComment({ onAddComment, inputRes }) {
   const emailInputRef = useRef();
@@ -36,12 +36,11 @@ export default function NewComment({ onAddComment, inputRes }) {
       <button>Submit</button>
 
       {inputRes && (
-        <ol className={css[inputRes[0] ? "error" : "success"]}>
-          {inputRes[1]}
-          {inputRes[1]?.map((msg, i) => {
-            <li key={i}>{msg}</li>;
-          })}
-        </ol>
+        <ul className={css[inputRes[0] ? "error" : "success"]}>
+          {inputRes[1]?.map((msg, i) => (
+            <li key={i}>{msg}</li>
+          ))}
+        </ul>
       )}
     </form>
   );

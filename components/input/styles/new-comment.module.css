@@ -35,3 +35,13 @@
 .form button {
   background-color: white;
 }
+.form .success {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.form .error {
+  color: darkred;
+  font-size: 1rem;
+  font-weight: bold;
+}
