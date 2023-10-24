@@ -31,7 +31,7 @@ export default function NewComment({ onAddComment, inputRes }) {
       </div>
       <div className={css.control}>
         <label htmlFor="comment">Your comment</label>
-        <textarea id="comment" rows="5" ref={commentInputRef}></textarea>
+        <textarea id="comment" rows="3" ref={commentInputRef}></textarea>
       </div>
       <button>Submit</button>
 

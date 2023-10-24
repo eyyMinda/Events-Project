@@ -9,11 +9,17 @@
   border-bottom: 2px solid #ccc;
 }
 .comments p {
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 .comments li div {
   text-align: right;
   font-style: italic;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.comments .date {
+  font-size: 12px;
 }
 .comments address {
   display: inline;

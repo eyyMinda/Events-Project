@@ -16,7 +16,7 @@ export default function Comments({ eventId }) {
         .then(res => res.json())
         .then(data => setComments(data.comments));
     }
-  }, [showComments, eventId]);
+  }, [showComments, eventId, inputResponse]);
 
   //================== POST =====================
   function handlePostComment(commentData) {
