@@ -16,3 +16,13 @@ export const validateMultipleInputs = (inputs, validators) => inputs.map((input,
   const [err, msg] = validators[index](input);
   return err ? msg : null;
 }).filter(Boolean);
+
+export const tryCatch = async (callback, errorMessage, res) => {
+  try {
+    const result = await callback();
+    return res || result;
+  } catch (error) {
+    console.error('TRYCATCH ERROR: ', error);
+    return { err: true, msg: errorMessage }; // Return the error response
+  }
+};
