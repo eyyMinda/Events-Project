@@ -35,9 +35,7 @@ class isValid {
     if (str.length > maxSize) return [true, `Name is too long, cannot exceed ${maxSize} characters`];
     if (str.length < minSize) return [true, `Name is too short, has to be atleast ${minSize} symbols`];
 
-    const otherLetters = str.slice(1);
     if (str[0].toUpperCase() !== str[0]) return [true, `First letter of a name must be upper cased`];
-    if (otherLetters.toLowerCase() !== otherLetters) return [true, `Other than the first letter of a name must be lower cased`];
 
     const allowedSymbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const invalidSymbol = str.split('').find(s => !allowedSymbols.includes(s));
