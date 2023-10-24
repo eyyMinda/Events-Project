@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import useSWR from "swr";
 import { api } from "@/helpers/api-util";
 import { transformObjToArr } from "@/helpers/utility";
@@ -8,7 +9,6 @@ import ErrorAlert from "@/components/events/error-alert/error-alert";
 import Button from "@/components/ui/button";
 import EventList from "@/components/events/event-list/eventList";
 import ResultsTitle from "@/components/events/events-search/results-title";
-import Head from "next/head";
 
 const fetcher = (...args) =>
   fetch(...args)

@@ -42,12 +42,11 @@ export default async function handler(req, res) {
       const client = await connectToMongo();
       const db = client.db("events_nextjs");
       const collection = await db.collection("comments");
-      comments = collection.find({ eventId: eventId }).sort({ dateAdded: -1 }).limit(10).toArray();
+      comments = await collection.find({ eventId: eventId }).sort({ dateAdded: -1 }).limit(10).toArray();
     } catch (e) {
       console.error(e);
     }
 
-    console.log('/api/: ', comments);
     res.status(201).json({ comments });
     return;
   }
