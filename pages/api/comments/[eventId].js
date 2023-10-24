@@ -6,6 +6,7 @@ export default function handler(req, res) {
 
   if (req.method === 'POST') {
     const { email, name, text } = req.body;
+    // Input Validation
     const inputs = [
       { value: name, validator: isValid.name },
       { value: email, validator: isValid.email },
@@ -19,18 +20,19 @@ export default function handler(req, res) {
     }, []);
     const invalid = errors.length > 0;
 
-    const response = {
-      err: invalid,
-      msg: invalid ? errors : ['Your Comment has been submitted!']
-    };
-
+    // Push to DB
     if (!invalid) {
       const newComment = {
         id: new Date().toISOString(),
         email, name, text
       };
-      response.comment = newComment;
     }
+
+    // Response
+    const response = {
+      err: invalid,
+      msg: invalid ? errors : ['Your Comment has been submitted!']
+    };
 
     res.status(invalid ? 422 : 201).json(response);
     return;
