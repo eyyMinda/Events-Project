@@ -1,5 +1,5 @@
 import { transformObjToArr } from "./utility";
-export const api = process.env.NEXT_PUBLIC_DB_URL;
+export const api = process.env.NEXT_PUBLIC_FIREDB_URL;
 
 //================== EVENTS ====================
 
