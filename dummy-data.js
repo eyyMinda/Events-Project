@@ -31,7 +31,7 @@ const DUMMY_EVENTS = [
   },
 ];
 
-export const DUMMY_COMMENTS = [
+const DUMMY_COMMENTS = [
   {
     id: "c1",
     name: "Maximilian",
