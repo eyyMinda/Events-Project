@@ -3,7 +3,7 @@ import css from "./styles/comment-list.module.css";
 export default function CommentList({ comments }) {
   return (
     <ul className={css.comments}>
-      {comments.length > 0 &&
+      {comments?.length > 0 &&
         comments.map(comment => (
           <li key={comment._id}>
             <p>{comment.text}</p>
