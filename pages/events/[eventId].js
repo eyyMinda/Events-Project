@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { getEventById, getFeaturedEvents } from "@/helpers/api-util";
+import { getEventById, getFeaturedEvents } from "@/helpers/api-utility";
 
 import Head from "next/head";
 import Button from "@/components/ui/button";

@@ -1,5 +1,6 @@
+import { connectToMongo } from "@/lib/mongodb";
+import { postToMongo, responseReturn } from "@/helpers/db-utility";
 import { isValid } from "@/helpers/authValidation";
-import { connectToMongo, postToMongo, responseReturn } from "@/helpers/mongodb";
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

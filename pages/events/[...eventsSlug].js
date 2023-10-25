@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import useSWR from "swr";
-import { api } from "@/helpers/api-util";
+import { api } from "@/helpers/api-utility";
 import { transformObjToArr } from "@/helpers/utility";
 
 import ErrorAlert from "@/components/events/error-alert/error-alert";

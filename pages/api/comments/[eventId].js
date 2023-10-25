@@ -1,6 +1,6 @@
-import { connectToMongo, getFromMongo, responseReturn } from "@/helpers/mongodb";
-import { isValid } from "@/helpers/authValidation";
-import { getCurrentDate, tryCatch, validateMultipleInputs } from "@/helpers/utility";
+import { connectToMongo } from "@/lib/mongodb";
+import { getFromMongo, postToMongo, responseReturn } from "@/helpers/db-utility";
+import { getCurrentDate, validateMultipleInputs } from "@/helpers/utility";
 
 export default async function handler(req, res) {
   const eventId = req.query.eventId;
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     try {
       client = await connectToMongo();
     } catch {
-      return responseReturn(res, 500, "Failed to connect to the database");
+      return responseReturn(res, 500, ["Failed to connect to the database"]);
     }
   }
 
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const { email, name, text } = req.body;
 
     // Input Validation   
-    const errors = validateMultipleInputs([name, email, text], [isValid.name, isValid.email, isValid.text]);
+    const errors = validateMultipleInputs([name, email, text], ["name", "email", "text"]);
     if (errors.length > 0) return responseReturn(res, 422, errors);
 
     // Push to DB
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     try {
       await postToMongo(client, "comments", newComment);
     } catch {
-      return responseReturn(res, 500, "Failed to sign you up due to wrong communication with database");
+      return responseReturn(res, 500, ["Failed to add a comment due to wrong communication with database"]);
     }
 
     return responseReturn(res, 201, ['Your Comment has been submitted!']);
@@ -38,9 +38,9 @@ export default async function handler(req, res) {
       const comments = await getFromMongo(client, "comments", { eventId: eventId }, { dateAdded: -1 });
       return responseReturn(res, 201, { comments });
     } catch {
-      return responseReturn(res, 500, "Failed to fetch comments due to wrong communication with database");
+      return responseReturn(res, 500, ["Failed to fetch comments due to wrong communication with database"]);
     }
   }
 
-  return responseReturn(res, 200, "'comments' api route");
+  return responseReturn(res, 200, ["'comments' api route"]);
 }
