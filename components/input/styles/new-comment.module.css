@@ -1,50 +1,63 @@
 .form {
-  margin: 2rem auto;
-  width: 100%;
-  border-radius: 6px;
-  background-color: #03be9f;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: #03be9f;
+  border-radius: 6px;
+  width: 100%;
   padding: 0.8rem 1rem;
+  margin: 2rem auto;
+  text-align: end;
 }
 .row {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 .control {
-  margin-bottom: 0.5rem;
   flex: 1;
   min-width: 10rem;
+  margin-bottom: 0.5rem;
 }
 .control label {
+  color: white;
   display: block;
+  text-align: left;
   font-weight: bold;
   margin-bottom: 0.2rem;
-  color: white;
-  text-align: left;
 }
 .control input,
 .control textarea {
+  background-color: #dcfff9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 2rem;
+  width: 100%;
   font: inherit;
   padding: 0.25rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 100%;
-  background-color: #dcfff9;
 }
-form.form button {
+form.form button:not(.cancel_btn) {
   background-color: #dcfff9;
+  transition: all 0.1s;
 }
 form.form button:is(:hover, :active) {
   background-color: white;
 }
-.form .success {
+.form button.cancel_btn {
+  background-color: transparent;
   color: white;
+}
+.form button.cancel_btn:is(:hover, :active) {
+  background-color: #ffffff33;
+  border-radius: 18px;
+}
+.form :is(.success, .error) {
+  text-align: start;
   font-size: 1rem;
   font-weight: bold;
 }
+.form .success {
+  color: white;
+}
 .form .error {
   color: darkred;
-  font-size: 1rem;
-  font-weight: bold;
 }
