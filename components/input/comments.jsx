@@ -5,7 +5,7 @@ import CommentList from "./comment-list";
 import NewComment from "./new-comment";
 
 export default function Comments({ eventId }) {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [inputResponse, setInputResonse] = useState([]);
 
