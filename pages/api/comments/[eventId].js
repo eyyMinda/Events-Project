@@ -34,13 +34,12 @@ export default async function handler(req, res) {
 
   // ============================ GET ================================
   if (req.method === 'GET') {
-    let comments;
     try {
-      comments = await getFromMongo(client, "comments", { eventId: eventId }, { dateAdded: -1 });
+      const comments = await getFromMongo(client, "comments", { eventId: eventId }, { dateAdded: -1 });
+      return responseReturn(res, 201, { comments });
     } catch {
       return responseReturn(res, 500, "Failed to fetch comments due to wrong communication with database");
     }
-    return responseReturn(res, 201, { comments });
   }
 
   return responseReturn(res, 200, "'comments' api route");
