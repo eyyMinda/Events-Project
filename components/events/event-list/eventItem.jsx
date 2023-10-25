@@ -19,7 +19,13 @@ export default function EventItem(props) {
 
   return (
     <li className={css.item}>
-      <Image src={"/" + image} width={250} height={160} alt={imageAlt} />
+      <Image
+        className={css.skeleton}
+        src={"/" + image}
+        width={250}
+        height={160}
+        alt={imageAlt}
+      />
       <div className={css.content}>
         <div>
           <h2>{title}</h2>

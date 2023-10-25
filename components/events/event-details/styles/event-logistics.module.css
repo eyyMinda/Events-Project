@@ -64,3 +64,17 @@
     align-items: flex-start;
   }
 }
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  opacity: 0.9;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(180, 32%, 75%);
+  }
+  100% {
+    background-color: hsl(180, 32%, 95%);
+  }
+}
