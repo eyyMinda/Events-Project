@@ -28,12 +28,12 @@ export default function NewsletterRegistration() {
           err
             ? {
                 title: "Failed!",
-                message: msg,
+                message: msg || "Something went wrong!",
                 status: "error",
               }
             : {
                 title: "Success!",
-                message: "Successfully registered for our newsletter!",
+                message: msg || "Successfully registered for our newsletter!",
                 status: "success",
               }
         );

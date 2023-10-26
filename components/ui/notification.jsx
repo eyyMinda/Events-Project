@@ -1,16 +1,16 @@
 import css from "./notification.module.css";
 
-import NotificationContext from "@/store/notification-context";
 import { useContext } from "react";
+import NotificationContext from "@/store/notification-context";
 
 function Notification(props) {
-  const notificationCtx = useContext(NotificationContext);
+  const notifCtx = useContext(NotificationContext);
   const { title, message, status } = props;
 
   return (
     <div
       className={`${css.notification} ${css[status]}`}
-      onClick={notificationCtx.hideNotification}>
+      onClick={() => notifCtx.toggleNotification(null)}>
       <h2>{title}</h2>
       <p>{message}</p>
     </div>
