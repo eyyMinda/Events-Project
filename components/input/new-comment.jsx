@@ -1,7 +1,7 @@
 import css from "./styles/new-comment.module.css";
 import { useRef, useState } from "react";
 
-export default function NewComment({ onAddComment, inputRes }) {
+export default function NewComment({ onAddComment }) {
   const [commentState, setCommentState] = useState(false);
   const emailInputRef = useRef();
   const nameInputRef = useRef();
@@ -60,14 +60,6 @@ export default function NewComment({ onAddComment, inputRes }) {
           </button>{" "}
           <button type="submit">Submit</button>
         </>
-      )}
-
-      {commentState && inputRes && (
-        <ul className={css[inputRes[0] ? "error" : "success"]}>
-          {inputRes[1]?.map((msg, i) => (
-            <li key={i}>{msg}</li>
-          ))}
-        </ul>
       )}
     </form>
   );

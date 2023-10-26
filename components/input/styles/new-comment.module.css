@@ -50,14 +50,3 @@ form.form button:is(:hover, :active) {
   background-color: #ffffff33;
   border-radius: 18px;
 }
-.form :is(.success, .error) {
-  text-align: start;
-  font-size: 1rem;
-  font-weight: bold;
-}
-.form .success {
-  color: white;
-}
-.form .error {
-  color: darkred;
-}

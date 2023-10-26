@@ -1,13 +1,15 @@
 import css from "./styles/comments.module.css";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import NotificationContext from "@/store/notification-context";
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
 
 export default function Comments({ eventId }) {
+  const notifCtx = useContext(NotificationContext);
   const [comments, setComments] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const [inputResponse, setInputResonse] = useState([]);
+  const [addCommentState, setAddCommentState] = useState(false);
 
   //================== GET =====================
   useEffect(() => {
@@ -16,21 +18,39 @@ export default function Comments({ eventId }) {
         .then(res => res.json())
         .then(data => setComments(data.comments));
     }
-  }, [showComments, eventId, inputResponse]);
+  }, [showComments, eventId, addCommentState]);
 
   //================== POST =====================
   function handlePostComment(commentData) {
-    const options = {
+    notifCtx.toggleNotification({
+      title: "Posting...",
+      message: "Posting a comment...",
+      status: "pending",
+    });
+
+    // send data to API
+    fetch(`/api/comments/${eventId}`, {
       method: "POST",
       body: JSON.stringify(commentData),
       headers: { "Content-Type": "application/json" },
-    };
-    // send data to API
-    fetch(`/api/comments/${eventId}`, options)
+    })
       .then(res => res.json())
       .then(data => {
         const { err, msg } = data;
-        if (msg !== inputResponse[1]) setInputResonse([err, msg]);
+        notifCtx.toggleNotification(
+          err
+            ? {
+                title: "Failed!",
+                message: msg || "Something went wrong!",
+                status: "error",
+              }
+            : {
+                title: "Success!",
+                message: msg || "Successfully commented!",
+                status: "success",
+              }
+        );
+        setAddCommentState(!err);
       });
   }
 
@@ -41,10 +61,7 @@ export default function Comments({ eventId }) {
       </button>
       {showComments && (
         <>
-          <NewComment
-            onAddComment={handlePostComment}
-            inputRes={inputResponse}
-          />
+          <NewComment onAddComment={handlePostComment} />
           <CommentList comments={comments} />
         </>
       )}

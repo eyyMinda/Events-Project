@@ -1,6 +1,6 @@
 class isValid {
   static fullname(str) {
-    if (str === undefined || str === '') return [true, 'Fullname cannot be blank'];
+    if (str === undefined || str.trim() === '') return [true, 'Fullname cannot be blank'];
     if (typeof str !== 'string') return [true, 'Fullname must be a string'];
 
     str = str.trim().replace(/\s+/g, ' ');
@@ -26,7 +26,7 @@ class isValid {
   }
 
   static name(str) {
-    if (str === undefined || str === '') return [true, 'Name cannot be blank'];
+    if (str === undefined || str.trim() === '') return [true, 'Name cannot be blank'];
     if (typeof str !== 'string') return [true, 'Name must be a string'];
 
     str = str.trim().replace(/\s+/g, ' ');
@@ -45,7 +45,7 @@ class isValid {
   }
 
   static email(str) {
-    if (str === undefined || str === '') return [true, 'Email cannot be blank'];
+    if (str === undefined || str.trim() === '') return [true, 'Email cannot be blank'];
     if (typeof str !== 'string') return [true, 'Email must be a string'];
     str = str.trim().replace(/\s+/g, ' ');
     // const regx = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/;  ///Full Regex email validation form
@@ -81,7 +81,7 @@ class isValid {
 
   static password(str) {
     const minPassLength = 8;
-    if (str === undefined || str === '') return [true, 'Password cannot be blank'];
+    if (str === undefined || str.trim() === '') return [true, 'Password cannot be blank'];
     if (typeof str !== 'string') return [true, 'Password must be a string'];
     str = str.trim().replace(/\s+/g, ' ');
 
@@ -93,7 +93,7 @@ class isValid {
   }
 
   static text(str) {
-    if (str === undefined || str === '') return [true, 'Text cannot be blank'];
+    if (str === undefined || str.trim() === '') return [true, 'Text cannot be blank'];
 
     return [false, 'OK'];
   }

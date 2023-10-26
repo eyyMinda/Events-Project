@@ -15,9 +15,9 @@ function Notification(props) {
       {typeof message === "string" && <p>{message}</p>}
       {Array.isArray(message) && (
         <div>
-          {message.map((m, i) => {
-            <p key={i}>{m}</p>;
-          })}
+          {message?.map((m, i) => (
+            <p key={i}>{m}</p>
+          ))}
         </div>
       )}
     </div>
