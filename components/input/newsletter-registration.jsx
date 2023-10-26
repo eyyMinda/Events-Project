@@ -1,36 +1,50 @@
+import NotificationContext from "@/store/notification-context";
 import css from "./styles/newsletter-registration.module.css";
-import { useRef, useState } from "react";
+import { useContext, useRef } from "react";
 
 export default function NewsletterRegistration() {
-  const [inputResponse, setInputResponse] = useState([]);
   const emailRef = useRef();
+  const notifCtx = useContext(NotificationContext);
 
-  function registrationHandler(e) {
+  function handleRegister(e) {
     e.preventDefault();
     const email = emailRef.current.value;
 
-    const options = {
+    notifCtx.toggleNotification({
+      title: "Signing up...",
+      message: "Registering for newsletter...",
+      status: "pending",
+    });
+
+    fetch("/api/newsletter", {
       method: "POST",
       body: JSON.stringify({ email }),
       headers: { "Content-Type": "application/json" },
-    };
-    fetch("/api/newsletter", options)
+    })
       .then(res => res.json())
       .then(data => {
         const { err, msg } = data;
-        if (msg !== inputResponse[1]) setInputResponse([err, msg]); // Validation res from the server
+        notifCtx.toggleNotification(
+          err
+            ? {
+                title: "Failed!",
+                message: msg,
+                status: "error",
+              }
+            : {
+                title: "Success!",
+                message: "Successfully registered for our newsletter!",
+                status: "success",
+              }
+        );
       });
   }
 
   return (
     <section className={css.newsletter}>
       <h2>Sign up to stay updated!</h2>
-      {inputResponse && (
-        <h3 className={css[inputResponse[0] ? "error" : "success"]}>
-          {inputResponse[1]}
-        </h3>
-      )}
-      <form onSubmit={registrationHandler}>
+
+      <form onSubmit={handleRegister}>
         <div className={css.control}>
           <input
             ref={emailRef}
