@@ -1,5 +1,5 @@
 import Link from "next/link";
-import css from "./button.module.css";
+import css from "./styles/button.module.css";
 
 export default function Button(props) {
   if (props.link) {
@@ -11,7 +11,7 @@ export default function Button(props) {
   }
 
   return (
-    <button type='button' className={css.btn} onClick={props.onClick}>
+    <button type="button" className={css.btn} onClick={props.onClick}>
       {props.children}
     </button>
   );

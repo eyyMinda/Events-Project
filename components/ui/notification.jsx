@@ -1,4 +1,4 @@
-import css from "./notification.module.css";
+import css from "./styles/notification.module.css";
 
 import { useContext } from "react";
 import NotificationContext from "@/store/notification-context";
@@ -6,13 +6,20 @@ import NotificationContext from "@/store/notification-context";
 function Notification(props) {
   const notifCtx = useContext(NotificationContext);
   const { title, message, status } = props;
+  const divCss = `${css.notification} ${css[status]}`;
 
   return (
-    <div
-      className={`${css.notification} ${css[status]}`}
-      onClick={() => notifCtx.toggleNotification(null)}>
+    <div className={divCss} onClick={() => notifCtx.toggleNotification(null)}>
       <h2>{title}</h2>
-      <p>{message}</p>
+
+      {typeof message === "string" && <p>{message}</p>}
+      {Array.isArray(message) && (
+        <div>
+          {message.map((m, i) => {
+            <p key={i}>{m}</p>;
+          })}
+        </div>
+      )}
     </div>
   );
 }

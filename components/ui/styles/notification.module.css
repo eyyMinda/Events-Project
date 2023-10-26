@@ -17,6 +17,9 @@
   font-size: 1.25rem;
   color: white;
 }
+.notification p {
+  margin-block: 0.2rem;
+}
 .pending {
   background-color: #177cbe;
 }
