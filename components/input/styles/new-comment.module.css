@@ -31,6 +31,7 @@
   border-radius: 4px;
   resize: vertical;
   min-height: 2rem;
+  max-height: 6rem;
   width: 100%;
   font: inherit;
   padding: 0.25rem;
