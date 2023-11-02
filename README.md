@@ -1,6 +1,6 @@
 # Events React/Next.js Project
 
-Welcome to the repository of the **Events** project. This repository serves as a practical application of concepts acquired from an intensive React.js and Next.js course. The primary objective of the project is to demonstrate proficiency in handling diverse functionalities within these technologies, with a specific focus on showcasing dynamic event listings and exploration.
+Welcome to the repository of the **Events** project. This repository serves as a practical application of concepts acquired from an informative React.js and Next.js course. The primary objective of the project is to demonstrate proficiency in handling diverse functionalities within these technologies, with a specific focus on showcasing dynamic event listings and exploration.
 
 ## Table of Contents
 - [Overview](#overview)
