@@ -31,7 +31,7 @@ The **Events** project encompasses the following key elements:
 - **Big Project File Structure**: The project follows an organized structure where significant components have dedicated folders, each containing smaller components catering to specific functions.
 
 ## Technical Setup 
-1. Clone the repository using `git clone https://github.com/your-username/events-react-nextjs.git`
+1. Clone the repository using `git clone https://github.com/eyyminda/events-react-nextjs.git`
 2. Navigate to the project directory: `cd events-project`
 3. Install dependencies: `npm install`
 4. Run the development server: `npm run dev`
