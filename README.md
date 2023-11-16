@@ -1,3 +1,5 @@
+[![wakatime](https://wakatime.com/badge/user/7217dc82-1bcf-4a0a-8b7f-96e2332f4c45/project/fe049170-367b-4d69-a2b3-8b100e39ebd4.svg?style=for-the-badge)](https://wakatime.com/badge/user/7217dc82-1bcf-4a0a-8b7f-96e2332f4c45/project/fe049170-367b-4d69-a2b3-8b100e39ebd4)
+
 # Events React/Next.js Project
 
 Welcome to the repository of the **Events** project. This repository serves as a practical application of concepts acquired from an informative React.js and Next.js course. The primary objective of the project is to demonstrate proficiency in handling diverse functionalities within these technologies, with a specific focus on showcasing dynamic event listings and exploration.
