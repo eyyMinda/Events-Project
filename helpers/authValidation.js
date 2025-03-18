@@ -54,6 +54,7 @@ class isValid {
     if (str.length > maxSize) return [true, `Email is too long, cannot exceed ${maxSize} characters`];
     const minWordLength = 10;
     const minLocaleLength = 3;
+    const allowedLocaleSymbols = /^([a-zA-Z0-9\.\+\-\_\!\#\$\%\&\'\*\/\=\?\^\`\{\|\}\~])/;
     const allowedSymbols = /^([a-zA-Z0-9\.])/;
     const parts = str.split('@');
     const [locale, domain] = parts;
@@ -65,7 +66,7 @@ class isValid {
     if (str.includes('..')) return [true, 'Email cannot contain 2 dots in a row'];
     if (locale[0] === '.' || !isNaN(+locale[0])) return [true, 'Email must start with a letter'];
     for (const s of locale) {
-      if (!allowedSymbols.test(s)) return [true, `Email name includes a restricted symbol - ${s}`];
+      if (!allowedLocaleSymbols.test(s)) return [true, `Email name includes a restricted symbol - ${s}`];
     };
 
     const domainParts = domain.split('.');
